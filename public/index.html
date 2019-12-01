@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NIM Finder</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<style type="text/css">
+
+		img {
+			height: 25%;
+			width: 25%;
+			
+		}
+
+		#container {
+			width: 75%;
+			margin-left: 5%;
+		}
+
+		#searchimg {
+			display: block;
+		}
+
+		#notfoundimg {
+			display: none;
+		}
+
+		#birthdayimg {
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+	<nav class="navbar mb-5 bg-secondary">
+			<form class="form-inline">
+				<input class="form-control mr-sm-2" type="search" name="sid" id="sid" placeholder="13517122">
+			</form>
+			<a class="navbar-brand text-white" href="#">ITB NIM Finder</a>
+	</nav>
+
+	<div class="rounded m-5" id="searchimg">
+		<img src="sherlockpepe.jpg" >
+	</div>
+	<div class="rounded m-5" id="notfoundimg">
+		<img src="angrypepe.jpg" >
+	</div>
+	<div class="rounded m-5" id="birthdayimg">
+		<img src="birthdaypepe.jpg" >
+	</div>
+
+	<div class="" id="container">		
+		<div class="mt-5" id="results"></div>
+	</div>
+
+
+	<script type="text/javascript">
+
+		var status = 'searching';
+
+		$('#sid').on('keyup change', () => {
+			var raw = $('#sid').val();
+			// var content = document.createTextNode($('#sid').val());
+			// console.log(content);
+			// console.log("whoa whoa stop dude");
+			// $('#results').append(content);
+
+			if (raw == "sibaruak") {
+				$('#results').html('');
+
+				$('#searchimg').css("display", "none");
+				$('#notfoundimg').css("display","none");
+				$('#birthdayimg').css("display", "block");
+				let el = document.createElement('div');
+				el.classList.add("bg-info");
+				el.classList.add("text-white");
+				el.classList.add("m-2");
+				el.classList.add("p-2");
+				el.classList.add("container-sm");
+				el.classList.add("rounded-lg");
+				el.innerHTML = `welcome to the club nyama`;
+
+				$('#results').append(el);
+
+				// $('#results').html("welcome to the club");
+			} else {
+				if (raw.length > 2) {
+					axios.get(`http://192.168.1.2:6969/nims/${raw}`)
+					.then((res) => {
+						console.log(typeof res);
+						console.log(res.data);
+						if (res.data.count === 0) {
+							console.log("count:"+res.data.count);
+							$('#birthdayimg').css("display","none");
+							$('#searchimg').css("display", "none")
+							$('#notfoundimg').css("display", "block");
+							$('#results').html(res.data.message);
+						} else {
+							// clear old search results
+							$('#results').html('');
+
+							// console.log("count:"+res.data.count);
+							// console.log(res.data.data[0].nama);
+
+							res.data.data.forEach(d => {
+								// console.log(`${d.nama} ${d.tpb} ${d.s1} ${d.s2} ${d.s3}`);
+								// var content = d.nama;
+
+								let el = document.createElement('div');
+								el.classList.add("bg-info");
+								el.classList.add("text-white");
+								el.classList.add("m-2");
+								el.classList.add("p-2");
+								el.classList.add("container-sm");
+								el.classList.add("rounded-lg");
+								el.innerHTML = `${d.nama} ${d.tpb !== 'NULL' ? d.tpb : ''} ${d.s1 !== 'NULL' ? d.s1 : ''} ${d.s2 !== 'NULL' ? d.s2 : ''} ${d.s3 !== 'NULL' ? d.s3 : ''}`;
+
+								$('#results').append(el);
+							})
+
+							$('#birthdayimg').css("display","none");
+							$('#searchimg').css("display", "block")
+							$('#notfoundimg').css("display", "none");
+						}
+					});
+				} else {
+					$('#results').html("Go ahead...");
+				}
+			}
+
+
+
+
+
+
+
+			// } else if (raw == 'chill') {
+			// 	$('#birthdayimg').css("display","none");
+			// 	$('#searchimg').css("display", "block")
+			// 	$('#notfoundimg').css("display", "none");
+			// 	$('#results').append(content);
+
+			// } else {
+			// 	$('#birthdayimg').css("display","none");
+			// 	$('#searchimg').css("display", "none")
+			// 	$('#notfoundimg').css("display", "block");
+			// 	$('#results').append(content);
+			// }
+		});
+
+	</script>
+</body>
+</html>
