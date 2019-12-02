@@ -9,7 +9,6 @@ $('#sid').on('keyup change', () => {
 
 	if (raw == "sibaruak") {
 
-		if ()
 		$('#results').html('');
 
 		$('#searchimg').css("display", "none");
