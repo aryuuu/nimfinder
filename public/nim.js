@@ -57,6 +57,7 @@ $('#sid').on('keyup change', () => {
 						el.classList.add("p-2");
 						el.classList.add("container-sm");
 						el.classList.add("rounded-lg");
+						el.classList.add("justify-content-around")
 
 						basic.innerHTML = `${d.nama} ${d.tpb !== 'NULL' ? d.tpb : '' } ${d.s1 !== 'NULL' ? d.s1 : ''} ${d.s2 !== 'NULL' ? d.s2 : ''} ${d.s3 !== 'NULL' ? d.s3 : ''}`
 						fakultas.innerHTML = `${d.fakultas}`
