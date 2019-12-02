@@ -22,7 +22,7 @@ app.use(express.static('public'));
 app.use('/public', express.static('public'));
 
 app.get('/nim', (req, res) => {
-	res.sendFile('./public/index.html');
+	res.sendFile('./public/index.html', {root: __dirname});
 });
 
 app.get('/nims/:id', (req, res, next) => {
