@@ -20,3 +20,9 @@ img {
 #birthdayimg {
 	display: none;
 }
+
+@media screen and (max-width: 500px) {
+  .el {
+    flex-direction: column;
+  }
+}

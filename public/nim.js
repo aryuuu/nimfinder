@@ -1,5 +1,14 @@
 
 
+$(document).on("keypress", 'form', function (e) {
+    var code = e.keyCode || e.which;
+    if (code == 13) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+
 $('#sid').on('keyup change', () => {
 	var raw = $('#sid').val();
 	// var content = document.createTextNode($('#sid').val());
@@ -45,26 +54,27 @@ $('#sid').on('keyup change', () => {
 
 						let el = document.createElement('div');
 						let basic = document.createElement('div');
-						let fakultas = document.createElement('div');
 						let jurusan = document.createElement('div');
 
-
+						el.classList.add("el");
 						el.classList.add("d-flex");
-						el.classList.add("flex-row");
+						// el.classList.add("flex-row");
 						el.classList.add("bg-info");
 						el.classList.add("text-white");
 						el.classList.add("m-2");
 						el.classList.add("p-2");
 						el.classList.add("container-sm");
 						el.classList.add("rounded-lg");
-						el.classList.add("justify-content-around")
+						el.classList.add("justify-content-between");
+
+						basic.classList.add('pl-1');
+						jurusan.classList.add('pr-1')
+
 
 						basic.innerHTML = `${d.nama} ${d.tpb !== 'NULL' ? d.tpb : '' } ${d.s1 !== 'NULL' ? d.s1 : ''} ${d.s2 !== 'NULL' ? d.s2 : ''} ${d.s3 !== 'NULL' ? d.s3 : ''}`
-						fakultas.innerHTML = `${d.fakultas}`
-						jurusan.innerHTML = `${d.jurusan}`
-						// el.innerHTML = `${d.nama} ${d.tpb !== 'NULL' ? d.tpb : ''} ${d.s1 !== 'NULL' ? d.s1 : ''} ${d.s2 !== 'NULL' ? d.s2 : ''} ${d.s3 !== 'NULL' ? d.s3 : ''} ${d.jurusan} `;
+						jurusan.innerHTML = `${d.fakultas} ${d.jurusan}`
+					
 						el.appendChild(basic);
-						el.appendChild(fakultas);
 						el.appendChild(jurusan);
 
 						$('#results').append(el);
