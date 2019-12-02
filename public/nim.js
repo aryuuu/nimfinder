@@ -58,6 +58,7 @@ $('#sid').on('keyup change', () => {
 
 						el.classList.add("el");
 						el.classList.add("d-flex");
+						// el.classList.add("d-fade");
 						// el.classList.add("flex-row");
 						el.classList.add("bg-info");
 						el.classList.add("text-white");
