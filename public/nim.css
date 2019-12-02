@@ -1,0 +1,22 @@
+img {
+	/*height: 25%;
+	width: 25%;*/
+	
+}
+
+#container {
+	width: 75%;
+	margin-left: 5%;
+}
+
+#searchimg {
+	display: block;
+}
+
+#notfoundimg {
+	display: none;
+}
+
+#birthdayimg {
+	display: none;
+}

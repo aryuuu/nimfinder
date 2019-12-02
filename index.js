@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.static('public'));
 app.use('/public', express.static('public'));
 
-app.get('/', (req, res) => {
+app.get('/nim', (req, res) => {
 	res.sendFile('./public/index.html');
 });
 
