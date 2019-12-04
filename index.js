@@ -27,7 +27,7 @@ app.get('/nim', (req, res) => {
 
 app.get('/nims/:id', (req, res, next) => {
 
-	nama = tpb = s1 = s2 = s3 = '%' + req.params.id + '%';
+	nama = tpb = s1 = s2 = s3 = '%' + req.params.id.split(" ").join("%") + '%';
 
 	dbConn.query("SELECT * FROM nim WHERE nama LIKE ? OR tpb LIKE ? OR s1 LIKE ? OR s2 LIKE ? OR s3 LIKE ?", 
 		[nama, tpb, s1, s2, s3],
