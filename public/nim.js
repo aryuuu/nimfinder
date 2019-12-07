@@ -36,7 +36,7 @@ $('#sid').on('keyup change', () => {
 
 	} else {
 		if (raw.length > 2) {
-			axios.get(`http://3.86.167.42:6969/nims/${raw}`)
+			axios.get(`http://3.86.167.42/nims/${raw}`)
 			.then((res) => {
 				
 				if (res.data.count === 0) {
