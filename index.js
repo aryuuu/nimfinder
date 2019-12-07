@@ -4,14 +4,14 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require("mysql");
 const port = 6969;
-const dbname = process.env.DBNAME;
-const dbuname = process.env.DBUNAME;
-const dbpwd = process.env.DBPWD;
+const dbname = 'NIMFinder';
+const dbuname = 'guest';
+
 
 const dbConn = mysql.createConnection({
 	host: 'localhost',
 	user: dbuname,
-	password: dbpwd,
+	password: '',
 	database: dbname
 });
 
