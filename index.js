@@ -3,6 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require("mysql");
+const solver = require("./24solver");
 const port = 6969;
 const dbname = 'NIMFinder';
 const dbuname = 'guest';
@@ -41,6 +42,25 @@ app.get('/nims/:id', (req, res, next) => {
 			}
 		});
 
+});
+
+app.get('/24solver/:a/:b/:c/:d', (req, res, next) => {
+
+	var nums = [req.params.a, req.params.b, req.params.c, req.params.d];
+	var check = 0;
+
+	nums.forEach(n => {
+		if(n %1 !== 0) {
+			check++;
+		}
+	});
+
+	if (check === 0) {
+		result = solver.evaluate(nums);
+		res.send({message:"you fcking cheater", count: result.length, data: result});
+	} else {
+		res.send({message: "if you are going to cheat, at least do it right bro"});
+	}
 });
 
 app.listen(port);
