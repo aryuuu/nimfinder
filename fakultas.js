@@ -1,0 +1,57 @@
+const fakultas = [
+				   {
+				      "nama":"FMIPA",
+				      "nim":"160"
+				   },
+				   {
+				      "nama":"SITH-S",
+				      "nim":"161"
+				   },
+				   {
+				      "nama":"SF",
+				      "nim":"162"
+				   },
+				   {
+				      "nama":"FITB",
+				      "nim":"163"
+				   },
+				   {
+				      "nama":"FTTM",
+				      "nim":"164"
+				   },
+				   {
+				      "nama":"STEI",
+				      "nim":"165"
+				   },
+				   {
+				      "nama":"FTSL",
+				      "nim":"166"
+				   },
+				   {
+				      "nama":"FTI",
+				      "nim":"167"
+				   },
+				   {
+				      "nama":"FSRD",
+				      "nim":"168"
+				   },
+				   {
+				      "nama":"FTMD",
+				      "nim":"169"
+				   },
+				   {
+				      "nama":"SBM",
+				      "nim":"197"
+				   },
+				   {
+				      "nama":"SITH-R",
+				      "nim":"198"
+				   },
+				   {
+				      "nama":"SAPPK",
+				      "nim":"199"
+				   }
+]
+
+
+module.exports.fakultas = fakultas;

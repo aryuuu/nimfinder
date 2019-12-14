@@ -8,6 +8,7 @@ const port = 6969;
 const dbname = 'NIMFinder';
 const dbuname = 'guest';
 
+const query = require('./query');
 
 const dbConn = mysql.createConnection({
 	host: 'localhost',
@@ -43,6 +44,27 @@ app.get('/nims/:id', (req, res, next) => {
 		});
 
 });
+
+
+app.get('/get/nim/:raw' , (req, res, next) => {
+	q = new query(req.params.raw);
+	q = q.extract();
+	console.log(`${q.raw}, ${q.nim}, ${q.nim}, ${q.tpb+q.angkatan}, ${q.s1+q.angkatan}`);
+
+	dbConn.query("SELECT * FROM nim WHERE nama LIKE ? AND tpb LIKE ? AND s1 LIKE ? AND tpb LIKE ? AND s1 LIKE ?",
+		[q.raw, q.nim, q.nim, q.tpb+q.angkatan, q.s1+q.angkatan],
+		(err, results, fields) => {
+			if (err) {
+				res.status(500).send({message: "Something went wrong :("});
+			} else if (results.length > 0) {
+				res.status(200).send({message: "We found something", count: results.length, data: results});
+			} else {
+				res.send({message: "Nothing found :(", count:0});
+			}
+		});
+});
+
+
 
 app.get('/24solver/:a/:b/:c/:d', (req, res, next) => {
 
