@@ -51,7 +51,7 @@ app.get('/get/nim/:raw' , (req, res, next) => {
 	q = q.extract();
 	
 
-	dbConn.query("SELECT * FROM nim WHERE nama LIKE ? AND (tpb LIKE ? OR s1 LIKE ?) AND (tpb LIKE ? OR s1 LIKE ?)",
+	dbConn.query("SELECT * FROM nim WHERE nama LIKE ? AND (tpb LIKE ? OR s1 LIKE ?) AND (tpb LIKE ? AND s1 LIKE ?)",
 		[q.raw, q.nim, q.nim, q.tpb+q.angkatan, q.s1+q.angkatan],
 		(err, results, fields) => {
 			if (err) {
