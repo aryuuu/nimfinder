@@ -5,15 +5,16 @@ const cors = require('cors');
 const mysql = require("mysql");
 const solver = require("./24solver");
 const port = 6969;
-const dbname = 'NIMFinder';
-const dbuname = 'guest';
+const dbname = process.env.DBNAME;
+const dbuname = process.env.DBUNAME;
+const dbpwd = process.env.DBPWD
 
 const query = require('./query');
 
 const dbConn = mysql.createConnection({
 	host: 'localhost',
 	user: dbuname,
-	password: '',
+	password: dbpwd,
 	database: dbname
 });
 
