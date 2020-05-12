@@ -60,7 +60,7 @@ app.get('/get/nim/:raw' , (req, res, next) => {
 			} else if (results.length > 0) {
 				res.status(200).send({message: "We found something", count: results.length, data: results});
 			} else {
-				res.send({message: "Nothing found :(", count:0});
+				res.status(204).send({message: "Nothing found :(", count:0});
 			}
 		});
 });
