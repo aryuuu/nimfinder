@@ -22,6 +22,10 @@ const getStudents = async (query = {}) => {
     options.page = parseint(query.page) - 1;
   }
 
+  if (query.email == 'true') {
+    options.email = true;
+  }
+
   if (query.q) {
     const angkatan4 = query.q.match(RE_4);
 

@@ -4,7 +4,19 @@ const getStudents = async (options = {}) => {
   const filter = {
     $and: [{}],
   };
-  const projection = {};
+  const projection = {
+    _id: 0,
+    nama: 1,
+    nim_tpb: 1,
+    nim_jur: 1,
+    tipe: 1,
+    unit_organisasi: 1,
+  };
+
+  if (options.email) {
+    projection.email_std = 1;
+    projection.email_real = 1;
+  }
   
   if (options.nama) {
     filter.$and.push({
