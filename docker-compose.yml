@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  bot:
+    image: fattfatt/nimfinder:latest
+    env_file: .env
+    restart: always
+    ports:
+      - "3000:3000"
